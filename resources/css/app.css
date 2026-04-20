@@ -1,0 +1,93 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* ─────────────────────────────────────────────────────────
+   En Tailwind v4 @apply sólo acepta utilidades, no clases
+   personalizadas. Las variantes de .btn se definen con sus
+   propias clases CSS base, sin heredar de .btn.
+───────────────────────────────────────────────────────── */
+
+@layer components {
+
+    /* ── Sidebar ─────────────────────────────────────────── */
+    .sidebar-link {
+        @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-400 hover:bg-gray-800 hover:text-white transition-colors duration-150;
+    }
+    .sidebar-link.active {
+        @apply bg-gray-800 text-white;
+    }
+
+    /* ── Badges ──────────────────────────────────────────── */
+    .badge        { @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium; }
+    .badge-blue   { @apply bg-blue-100 text-blue-800; }
+    .badge-yellow { @apply bg-yellow-100 text-yellow-800; }
+    .badge-green  { @apply bg-green-100 text-green-800; }
+    .badge-red    { @apply bg-red-100 text-red-800; }
+    .badge-gray   { @apply bg-gray-100 text-gray-800; }
+    .badge-orange { @apply bg-orange-100 text-orange-800; }
+
+    /* ── Cards ───────────────────────────────────────────── */
+    .card        { @apply bg-white rounded-xl border border-gray-200 shadow-sm; }
+    .card-header { @apply px-6 py-4 border-b border-gray-100 flex items-center justify-between; }
+    .card-body   { @apply px-6 py-4; }
+
+    /* ── Botones — sin @apply de clase personalizada ─────── */
+    .btn {
+        @apply inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium
+               transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2;
+    }
+    .btn-primary {
+        @apply inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium
+               transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2
+               bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+    }
+    .btn-danger {
+        @apply inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium
+               transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2
+               bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+    }
+    .btn-success {
+        @apply inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium
+               transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2
+               bg-green-600 text-white hover:bg-green-700 focus:ring-green-500;
+    }
+    .btn-secondary {
+        @apply inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium
+               transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2
+               bg-gray-100 text-gray-700 hover:bg-gray-200 focus:ring-gray-300;
+    }
+    .btn-outline {
+        @apply inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium
+               transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2
+               border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-gray-300;
+    }
+
+    /* ── Inputs ──────────────────────────────────────────── */
+    .form-input {
+        @apply block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm
+               focus:border-blue-500 focus:outline-none transition;
+    }
+    .form-label  { @apply block text-sm font-medium text-gray-700 mb-1; }
+    .form-error  { @apply mt-1 text-xs text-red-600; }
+    .form-select {
+        @apply block w-full rounded-lg border border-gray-300 px-3 py-2 pr-8 text-sm shadow-sm
+               bg-white focus:border-blue-500 focus:outline-none transition;
+    }
+
+    /* ── Tabla ───────────────────────────────────────────── */
+    .table-container { @apply overflow-x-auto rounded-lg border border-gray-200; }
+    .table           { @apply min-w-full divide-y divide-gray-200; }
+    .table thead     { @apply bg-gray-50; }
+    .table th        { @apply px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500; }
+    .table td        { @apply px-4 py-3 text-sm text-gray-700; }
+    .table tbody tr  { @apply border-b border-gray-100 hover:bg-gray-50 transition-colors; }
+}
